@@ -1,20 +1,40 @@
+//CART - 1
 //Cart item 1 - decrease quantity
 const decreaseQuantity = document.getElementById('decreaseQuantity1');
 decreaseQuantity.addEventListener('click', function () {
-    startCalculation(1, -1);
+    startCalculation(1, -1, 1219);
 });
 
 //Cart item 1 - input field
 const body = document.getElementById('body');
 body.addEventListener('click', function(){
-    const inputField = document.getElementById('currentQuantity1');
-    updateProductTotal('currentPrice1','currentQuantity1');
+    updateProductTotal('currentPrice1','currentQuantity1', 1219);
 })
 
 //Cart item 1 - increase quantity
 const increaseQuantity = document.getElementById('increaseQuantity1');
 increaseQuantity.addEventListener('click', function () {
-    startCalculation(1, 1);
+    startCalculation(1, 1, 1219);
+});
+
+
+//CART - 2
+//Cart item 2 - decrease quantity
+const decreaseQuantity2 = document.getElementById('decreaseQuantity2');
+decreaseQuantity2.addEventListener('click', function () {
+    startCalculation(2, -1, 59);
+});
+
+//Cart item 2 - input field
+const body2 = document.getElementById('body');
+body2.addEventListener('click', function(){
+    updateProductTotal('currentPrice2','currentQuantity2', 59);
+})
+
+//Cart item 2 - increase quantity
+const increaseQuantity2 = document.getElementById('increaseQuantity2');
+increaseQuantity2.addEventListener('click', function () {
+    startCalculation(2, 1, 59);
 });
 
 
@@ -26,7 +46,7 @@ function startCalculation(serial, positiveNegative) {
     itemPrice = "currentPrice" + serial;
     if (parseInt(document.getElementById(itemQuantity).value) > 0 || positiveNegative == 1) {
         quantityFunction(itemQuantity, positiveNegative);
-        updateProductTotal(itemPrice , itemQuantity);
+        updateProductTotal(itemPrice , itemQuantity, productPrice);
     }
 }
 
@@ -40,11 +60,11 @@ function quantityFunction(quantitySerial, plusMinus) {
 }
 
 //change total product price
-function updateProductTotal(thePrice,theQuantity) {
+function updateProductTotal(thePrice,theQuantity, productPrice) {
     const currentPrice = document.getElementById(thePrice);
     theQuantity = document.getElementById(theQuantity);
     const currentQuantity = theQuantity.value;
     var currentQuantityNumber = parseInt(currentQuantity);
-    var newPrice = 1219*currentQuantityNumber;
+    var newPrice = productPrice*currentQuantityNumber;
     currentPrice.innerText = newPrice;
 }
