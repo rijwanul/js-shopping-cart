@@ -8,7 +8,7 @@ decreaseQuantity.addEventListener('click', function () {
 const body = document.getElementById('body');
 body.addEventListener('click', function(){
     const inputField = document.getElementById('currentQuantity1');
-    console.log (inputField.value);
+    updateProductTotal('currentPrice1','currentQuantity1');
 })
 
 //Cart item 1 - increase quantity
@@ -26,7 +26,7 @@ function startCalculation(serial, positiveNegative) {
     itemPrice = "currentPrice" + serial;
     if (parseInt(document.getElementById(itemQuantity).value) > 0 || positiveNegative == 1) {
         quantityFunction(itemQuantity, positiveNegative);
-        updateProductTotal(itemPrice, positiveNegative, itemQuantity);
+        updateProductTotal(itemPrice , itemQuantity);
     }
 }
 
@@ -40,9 +40,11 @@ function quantityFunction(quantitySerial, plusMinus) {
 }
 
 //change total product price
-function updateProductTotal(thePrice, plusMinus, theQuantity) {
+function updateProductTotal(thePrice,theQuantity) {
     const currentPrice = document.getElementById(thePrice);
-    var currentPriceNumber = parseInt(currentPrice.innerText);
-    var newPrice = currentPriceNumber + (1219 * plusMinus);
+    theQuantity = document.getElementById(theQuantity);
+    const currentQuantity = theQuantity.value;
+    var currentQuantityNumber = parseInt(currentQuantity);
+    var newPrice = 1219*currentQuantityNumber;
     currentPrice.innerText = newPrice;
 }
