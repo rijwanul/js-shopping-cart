@@ -38,6 +38,9 @@ increaseQuantity2.addEventListener('click', function () {
 });
 
 
+
+
+
 //Functions Hub
 //Star calculation
 function startCalculation(serial, positiveNegative) {
@@ -67,4 +70,20 @@ function updateProductTotal(thePrice,theQuantity, productPrice) {
     var currentQuantityNumber = parseInt(currentQuantity);
     var newPrice = productPrice*currentQuantityNumber;
     currentPrice.innerText = newPrice;
+    updateTotal();
+}
+
+//Update total
+function updateTotal(){
+    var product1Price = document.getElementById('currentPrice1').innerText;
+    var productPriceNumber1 = parseInt(product1Price);
+    var product1Price = document.getElementById('currentPrice2').innerText;
+    var productPriceNumber2 = parseInt(product1Price);
+    var totalPriceNumber = productPriceNumber1+productPriceNumber2;
+
+    document.getElementById('subtotal').innerHTML = totalPriceNumber;
+    var vat = (totalPriceNumber*15)/100;
+    document.getElementById('tax').innerHTML = vat;
+    var vatTotal = totalPriceNumber+vat;
+    document.getElementById('total').innerHTML = vatTotal;
 }
